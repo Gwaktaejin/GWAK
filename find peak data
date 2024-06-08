@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main(int argc, char* argv[]) {
+
+	int t, size;
+	cin >> t;
+	for (int i = 0; i < t; i++) {
+		cin >> size;
+		vector<int> peak;
+		vector<int> vec1(size);
+		for (int j = 0; j < size; j++) {
+			int number;
+			cin >> number;
+			vec1[j] = number;
+		}
+		for (int j = 0; j < (vec1.size() - 2); j++) {
+			if (*(vec1.begin() + j) < *(vec1.begin() + j + 1) && *(vec1.begin() + j + 1) > *(vec1.begin() + j + 2)) {
+				peak.push_back(*(vec1.begin() + j + 1));
+			}
+		}
+		for (int j = 0; j < peak.size(); j++) {
+			cout << peak[j] << " ";
+		}
+		peak.clear();
+		cout << "\n";
+	}
+
+	return 0;
+}
